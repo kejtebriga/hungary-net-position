@@ -1,0 +1,38 @@
+# --- Skrivnosti: API ključ ENTSO-E (NIKOLI na GitHub) ---
+.env
+.env.*
+
+# --- Podatki: preveliki, ponovno se ustvarijo s skriptami v src/;
+#     CSV z investing.com ni naš za objavo ---
+data/
+
+# --- Gradivo naloge (zaupno gradivo za zaposlovanje) ---
+*.pdf
+!report/*.pdf
+MPI Recruitment Task Stara/
+
+# --- Python okolje in predpomnilniki ---
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# --- LaTeX pomožne datoteke ---
+report/*.aux
+report/*.log
+report/*.out
+report/*.toc
+report/*.fls
+report/*.fdb_latexmk
+report/*.synctex.gz
+report/*.bbl
+report/*.blg
+
+# --- Sistem ---
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+
+# --- Lokalne zapiske za Claude (omenjajo naročnika) ---
+CLAUDE.md
