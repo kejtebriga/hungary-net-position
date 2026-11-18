@@ -93,8 +93,17 @@ def graf1():
     tab["Neto (meje, + izvoz)"] = neto.round(0)
     tab["Neto/poraba %"] = (neto / poraba * 100).round(1)
     print("\nLetna povprečja, MW (povprečje vseh 15-min vrednosti v letu; leta po CET)")
-    print("2026* = 1. 1. – 14. 11. 2026; Sonce prazno = ni podatka\n")
+    print("2026* = 1. 1. – 15. 11. 2026; Sonce prazno = ni podatka\n")
     print(tab.T.to_string(na_rep="–"))
+
+    # TWh = povprečna moč [MW] × število ur v letu / 1.000.000
+    ure = p["Load"].groupby(leto).count() / 4          # 4 četrture na uro
+    twh = pd.concat([letno, proizvodnja.rename("SKUPAJ proizvodnja"),
+                     poraba.rename("Poraba"), neto.rename("Neto (+ izvoz)")],
+                    axis=1).mul(ure, axis=0) / 1e6
+    print("\nLetna energija, TWh (= povprečna moč × ure v letu); "
+          "2026* = le 1. 1. – 15. 11.\n")
+    print(twh.round(2).T.to_string(na_rep="–"))
 
     # --- izris: (A) 2015–2026 brez sonca + neto pozicija, (B) 2020–2026 s soncem
     brez_sonca = [s for s in SKUPINE if s != "Sonce"]
@@ -143,7 +152,7 @@ def izris_virov(letno, poraba, skupine, naslov, ime, opomba, neto=None):
     else:
         ax_x = ax1
     ax_x.set_xticks(x, oznaka_leta(leta))
-    fig.text(0.99, -0.01, f"{opomba}   * 2026: 1. 1. – 14. 11.   "
+    fig.text(0.99, -0.01, f"{opomba}   * 2026: 1. 1. – 15. 11.   "
              "Vir: Energy-Charts", ha="right", fontsize=7, color="#666666")
     shrani(fig, ime)
 
@@ -167,7 +176,7 @@ def graf2():
     tab["SKUPAJ"] = vsota.round(0)
     print("\nNeto trgovanje po mejah, MW (+ izvoz iz HU, − uvoz v HU)")
     print("letna povprečja 15-min vrednosti, leta po CET; prazno = meja še ni "
-          "imela trgovanja; 2026* = do 14. 11.\n")
+          "imela trgovanja; 2026* = do 15. 11.\n")
     print(tab.T.to_string(na_rep="–"))
 
     leta = letno.index.tolist()
@@ -193,7 +202,7 @@ def graf2():
     ax.set_title("Neto čezmejno trgovanje po mejah (letna povprečja)", pad=30)
     ax.legend(ncol=8, fontsize=7.5, loc="lower center",
               bbox_to_anchor=(0.5, 1.0), handlelength=1.0, columnspacing=0.9)
-    fig.text(0.99, -0.01, "* 2026: 1. 1. – 14. 11.   Vir: Energy-Charts "
+    fig.text(0.99, -0.01, "* 2026: 1. 1. – 15. 11.   Vir: Energy-Charts "
              "(trgovanje, ne fizični tokovi)", ha="right", fontsize=7,
              color="#666666")
     shrani(fig, "a2_meje_po_letih")
@@ -357,7 +366,7 @@ def graf4():
                  "(+ izvoz, − uvoz)", pad=24)
     ax.legend(ncol=7, loc="lower center", bbox_to_anchor=(0.5, 1.0),
               handlelength=1.2)
-    fig.text(0.99, -0.06, "2026: okt + 1.–14. nov.  15-min termini, lokalni "
+    fig.text(0.99, -0.06, "2026: okt + 1.–15. nov.  15-min termini, lokalni "
              "čas.  Vir: Energy-Charts", ha="right", fontsize=7, color="#666666")
     shrani(fig, "a4b_profil_okt_nov_po_letih")
     print("\nOKT–NOV po letih, neto po urah, MW (urno povprečje, lokalni čas)\n"
@@ -496,7 +505,7 @@ def graf6():
     t["Plin / base"] = t["Capture Plin"] / t["Baseload"]
     print("\nCene po letih, €/MWh (15-min; pred jesenjo 2025 urna cena "
           "razdeljena na 4 četrture). Peakload = pon–pet 8–20 lokalni čas.")
-    print("Capture = s proizvodnjo tehtana cena. 2026 = do 14. 11.\n")
+    print("Capture = s proizvodnjo tehtana cena. 2026 = do 15. 11.\n")
     print(t.round(2).T.to_string())
 
     # mesečno za 2025: kako se vrednost sonca spreminja čez leto
@@ -526,7 +535,7 @@ def graf6():
     ax.legend(ncol=5, loc="lower center", bbox_to_anchor=(0.5, 1.0),
               fontsize=7.5, handlelength=1.6)
     fig.text(0.99, -0.02, "Vrednost = s proizvodnjo tehtana cena.  * 2026: do "
-             "14. 11.  Vir: Energy-Charts", ha="right", fontsize=7,
+             "15. 11.  Vir: Energy-Charts", ha="right", fontsize=7,
              color="#666666")
     shrani(fig, "a6_capture_price")
 
