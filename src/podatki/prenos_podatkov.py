@@ -10,7 +10,7 @@ Viri (brez API ključa):
   - Open-Meteo: vreme (zgodovina + napoved) za 5 madžarskih mest
 
 Rezultat: datoteke .parquet v mapi data/ (UTC časovni žigi).
-Zagon:  .venv/bin/python src/prenos_podatkov.py
+Zagon:  .venv/bin/python src/podatki/prenos_podatkov.py
 """
 
 from __future__ import annotations
@@ -22,7 +22,7 @@ from pathlib import Path
 import pandas as pd
 import requests
 
-KOREN = Path(__file__).resolve().parents[1]
+KOREN = Path(__file__).resolve().parents[2]
 DATA = KOREN / "data"
 DATA.mkdir(exist_ok=True)
 

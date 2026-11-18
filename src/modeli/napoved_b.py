@@ -19,15 +19,21 @@ preprostima napovedma: »enako kot prejšnji teden« in »povprečje zadnjih 2 t
 
 Vse v lokalnem času (Europe/Budapest), 15-min vrednosti, MW, + = izvoz.
 Brez pogleda v prihodnost: uporabimo le podatke do ned 15. 11. 2026 23:45.
-Zagon: .venv/bin/python src/napoved_b.py
+Zagon: .venv/bin/python src/modeli/napoved_b.py
 """
+import sys
+from pathlib import Path
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from analiza_a import (DATA, FIG, KONEC, PALETA, SKUPINE, TZ, osnovni_df, preberi,
+# skupne funkcije (branje podatkov, prazniki, zalomljena črta) so v analiza_a.py
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "analiza"))
+from analiza_a import (DATA, KONEC, KOREN, PALETA, SKUPINE, TZ, osnovni_df, preberi,
                        prazniki, prileganje_zalomljeno, shrani)
 
+FIG_B = KOREN / "figures" / "b"
 T47 = pd.Timestamp("2026-11-16", tz=TZ)          # ponedeljek tedna 47
 DNI = ["pon", "tor", "sre", "čet", "pet", "sob", "ned"]
 
@@ -233,8 +239,8 @@ if __name__ == "__main__":
     # shrani rezultate testa za nadaljnje korake
     for let, (t, e15, _) in rezultati.items():
         ime = "vse" if let is None else f"{let}l"
-        t.to_parquet(FIG.parent / "data" / f"backtest_{ime}.parquet")
-        e15.to_parquet(FIG.parent / "data" / f"backtest_napake15_{ime}.parquet")
+        t.to_parquet(DATA / f"backtest_{ime}.parquet")
+        e15.to_parquet(DATA / f"backtest_napake15_{ime}.parquet")
 
     # -----------------------------------------------------------------------
     # 6. NAPOVED ZA TEDEN 47 (parametri iz zadnjih 3 let)
@@ -288,7 +294,7 @@ if __name__ == "__main__":
     # zamrznjena napoved (pred ogledom dejanskih podatkov za 16. 11.+)
     n.to_parquet(DATA / "napoved_t47_zamrznjena.parquet")
     n[["Neto", "spodaj", "zgoraj", "Poraba", "Paks", "Plin", "Sonce"]].round(1) \
-        .to_csv(FIG.parent / "report" / "napoved_t47.csv")
+        .to_csv(KOREN / "report" / "napoved_t47.csv")
     print("  zamrznjeno: data/napoved_t47_zamrznjena.parquet, report/napoved_t47.csv")
 
     # --- GRAF b1: profil napovedi s pasom + zadnji teden
@@ -312,7 +318,7 @@ if __name__ == "__main__":
     ax.legend(ncol=3, loc="lower center", bbox_to_anchor=(0.5, 1.0))
     fig.text(0.99, -0.03, "15-min vrednosti, lokalni čas. Razpon iz testa na "
              "tednih okt–dec 2023–2026.", ha="right", fontsize=7, color="#666666")
-    shrani(fig, "b1_napoved_t47")
+    shrani(fig, "b1_napoved_t47", FIG_B)
 
     # --- GRAF b2: test – dejansko vs napoved (tedenska povprečja)
     tt = t[t.index >= "2025-01-01"]
@@ -327,4 +333,4 @@ if __name__ == "__main__":
     fig.text(0.99, -0.03, "Pri testu je uporabljena izmerjena temperatura, zato je "
              "test nekoliko preveč optimističen.", ha="right", fontsize=7,
              color="#666666")
-    shrani(fig, "b2_test_tedni")
+    shrani(fig, "b2_test_tedni", FIG_B)

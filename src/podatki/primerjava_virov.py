@@ -5,14 +5,14 @@ Za vsako količino na urni ravni v skupnem obdobju izračuna:
   povprečje v obeh virih, povprečno absolutno razliko (MAE), relativno razliko in korelacijo.
 Rezultat: izpis + data/entsoe/primerjava.csv
 
-Zagon: .venv/bin/python src/primerjava_virov.py
+Zagon: .venv/bin/python src/podatki/primerjava_virov.py
 """
 
 from pathlib import Path
 
 import pandas as pd
 
-KOREN = Path(__file__).resolve().parents[1]
+KOREN = Path(__file__).resolve().parents[2]
 D, E = KOREN / "data", KOREN / "data" / "entsoe"
 
 

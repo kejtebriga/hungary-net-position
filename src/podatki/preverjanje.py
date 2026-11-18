@@ -4,14 +4,14 @@ Preverjanje prenesenih podatkov:
   2. bilanca: proizvodnja − poraba ≈ neto čezmejni tok (izvoz − uvoz),
   3. kontrolne vrednosti za ročno primerjavo z ENTSO-E Transparency.
 
-Zagon: .venv/bin/python src/preverjanje.py
+Zagon: .venv/bin/python src/podatki/preverjanje.py
 """
 
 from pathlib import Path
 
 import pandas as pd
 
-KOREN = Path(__file__).resolve().parents[1]
+KOREN = Path(__file__).resolve().parents[2]
 DATA = KOREN / "data"
 
 pro = pd.read_parquet(DATA / "proizvodnja.parquet")

@@ -10,7 +10,7 @@ Nabori (Madžarska, ponudbeno območje 10YHU-MAVIR----U):
   - A11  fizični čezmejni tokovi                        -> fizicni_tokovi.parquet[MW, + = uvoz v HU]
 
 API ključ se prebere iz datoteke .env (ENTSOE_API_KEY=...), nikoli se ne izpiše.
-Zagon: .venv/bin/python src/prenos_entsoe.py
+Zagon: .venv/bin/python src/podatki/prenos_entsoe.py
 """
 
 from __future__ import annotations
@@ -23,7 +23,7 @@ from pathlib import Path
 import pandas as pd
 import requests
 
-KOREN = Path(__file__).resolve().parents[1]
+KOREN = Path(__file__).resolve().parents[2]
 IZHOD = KOREN / "data" / "entsoe"
 KOSI = IZHOD / "kosi"
 KOSI.mkdir(parents=True, exist_ok=True)

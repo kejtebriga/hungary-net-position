@@ -24,15 +24,21 @@ python3 -m venv .venv
 .venv/bin/pip install pandas pyarrow matplotlib requests scikit-learn
 
 # 1. prenos podatkov (Energy-Charts + Open-Meteo); ~30 min zaradi omejitev hitrosti API-ja
-.venv/bin/python src/prenos_podatkov.py
-.venv/bin/python src/prenos_dodatno.py
+.venv/bin/python src/podatki/prenos_podatkov.py
+.venv/bin/python src/podatki/prenos_dodatno.py
 
 # 2. preverjanje z uradnim virom ENTSO-E (potrebuje datoteko .env z vrstico ENTSOE_API_KEY=...)
-.venv/bin/python src/prenos_entsoe.py
-.venv/bin/python src/primerjava_virov.py
+.venv/bin/python src/podatki/prenos_entsoe.py
+.venv/bin/python src/podatki/primerjava_virov.py
 
 # 3. kontrola bilance in kontrolne vrednosti
-.venv/bin/python src/preverjanje.py
+.venv/bin/python src/podatki/preverjanje.py
+
+# 4. analiza a) – grafi v figures/a/
+.venv/bin/python src/analiza/analiza_a.py 1 2 3 4 5 6
+
+# 5. napoved b) – test na vseh tednih + napoved tedna 47, grafi v figures/b/
+.venv/bin/python src/modeli/napoved_b.py
 ```
 
 Cena plina TTF: s strani Investing.com (*Historical Data → Download*) shrani CSV v `data/`.
@@ -40,9 +46,12 @@ Cena plina TTF: s strani Investing.com (*Historical Data → Download*) shrani C
 ## Struktura
 
 ```
-src/        skripte za prenos, preverjanje in analizo
-figures/    grafi
-report/     poročilo (LaTeX)
+src/podatki/   prenos podatkov in preverjanje (Energy-Charts, Open-Meteo, ENTSO-E)
+src/analiza/   analiza a)
+src/modeli/    napovedni modeli b)
+figures/a, b, c   grafi po delih naloge
+literatura/    povzetki člankov
+report/        poročilo (LaTeX) in zamrznjena napoved tedna 47
 ```
 
 ## Opombe

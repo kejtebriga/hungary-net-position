@@ -5,14 +5,14 @@ Izvoz podatkov v CSV za ogled v Excelu (mapa data/za_ogled/).
 - ločilo ';' in decimalna vejica (slovenske nastavitve Excela), kodiranje UTF-8 z BOM
 - vse vrednosti so urna povprečja v MW (cena v EUR/MWh, temperatura v °C)
 
-Zagon: .venv/bin/python src/izvoz_csv.py
+Zagon: .venv/bin/python src/podatki/izvoz_csv.py
 """
 
 from pathlib import Path
 
 import pandas as pd
 
-KOREN = Path(__file__).resolve().parents[1]
+KOREN = Path(__file__).resolve().parents[2]
 DATA = KOREN / "data"
 IZHOD = DATA / "za_ogled"
 IZHOD.mkdir(exist_ok=True)

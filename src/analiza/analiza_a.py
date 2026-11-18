@@ -1,7 +1,7 @@
 """
 Analiza a): neto pozicija Madžarske – grafi in tabele.
 
-Zagon:  .venv/bin/python src/analiza_a.py 1 2 3 4 5 6   (izbor grafov po številki)
+Zagon:  .venv/bin/python src/analiza/analiza_a.py 1 2 3 4 5 6   (izbor grafov po številki)
 
 Konvencija predznaka: neto pozicija in meje  + = IZVOZ, − = UVOZ
 (Energy-Charts 'cbet' je + = uvoz, zato predznak obrnemo).
@@ -16,9 +16,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-KOREN = Path(__file__).resolve().parent.parent
+KOREN = Path(__file__).resolve().parents[2]
 DATA = KOREN / "data"
-FIG = KOREN / "figures"
+FIG = KOREN / "figures" / "a"
 FIG.mkdir(exist_ok=True)
 
 PALETA = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100",
@@ -47,11 +47,12 @@ def oznaka_leta(leta):
     return [f"{l}*" if l == zadnje else str(l) for l in leta]
 
 
-def shrani(fig, ime):
+def shrani(fig, ime, mapa=FIG):
+    mapa.mkdir(parents=True, exist_ok=True)
     for konc in ("pdf", "png"):
-        fig.savefig(FIG / f"{ime}.{konc}")
+        fig.savefig(mapa / f"{ime}.{konc}")
     plt.close(fig)
-    print(f"  shranjeno: figures/{ime}.pdf / .png")
+    print(f"  shranjeno: {mapa.relative_to(KOREN)}/{ime}.pdf / .png")
 
 
 # ---------------------------------------------------------------------------

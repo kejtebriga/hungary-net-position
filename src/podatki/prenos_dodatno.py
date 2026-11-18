@@ -14,7 +14,7 @@ Dodatni podatki (dopolnilo k prenos_podatkov.py), od 2023 naprej:
 Vsak kos se sproti shrani v data/kosi_dodatno/, da se ob prekinitvi nadaljuje.
 Neobvezni viri (npr. območje, ki ga API nima) ne ustavijo prenosa, ampak se izpišejo.
 
-Zagon: .venv/bin/python src/prenos_dodatno.py
+Zagon: .venv/bin/python src/podatki/prenos_dodatno.py
 """
 
 from __future__ import annotations
@@ -26,7 +26,7 @@ from pathlib import Path
 import pandas as pd
 import requests
 
-KOREN = Path(__file__).resolve().parents[1]
+KOREN = Path(__file__).resolve().parents[2]
 DATA = KOREN / "data"
 KOSI = DATA / "kosi_dodatno"
 KOSI.mkdir(parents=True, exist_ok=True)
