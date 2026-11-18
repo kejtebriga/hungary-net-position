@@ -113,8 +113,10 @@ def oceni_parametre(df, vreme, tipi, do, let):
 # ---------------------------------------------------------------------------
 # 3. NAPOVED ZA EN TEDEN
 # ---------------------------------------------------------------------------
-def napovej_teden(df, vreme, tipi, ponedeljek, par):
-    """Napoved po kosih za 7 dni od 'ponedeljek'; uporabi le podatke pred njim."""
+def napovej_teden(df, vreme, tipi, ponedeljek, par, plin="2t"):
+    """Napoved po kosih za 7 dni od 'ponedeljek'; uporabi le podatke pred njim.
+    plin = "2t": raven plina iz zadnjih 2 tednov;  "3d": oblika iz 2 tednov,
+    raven iz zadnjih 3 dni (ujame nenadne spremembe, npr. padec plina 13. 11.)."""
     zac_baze = ponedeljek - pd.DateOffset(days=14)
     baza = dodaj_kljuce(df[(df.index >= zac_baze) & (df.index < ponedeljek)], tipi)
     cilj = pd.date_range(ponedeljek, ponedeljek + pd.DateOffset(days=7),
@@ -157,7 +159,10 @@ def napovej_teden(df, vreme, tipi, ponedeljek, par):
     sprememba = (n["Poraba"] - profil("Poraba")) \
         - (n["Sonce"] - profil("Sonce", loci_tip=False)) \
         - (n["Paks"] - baza["Paks"].mean())
-    n["Plin"] = np.maximum(profil("Plin") + par["delez_plina"] * sprememba, 0)
+    plin_osnova = profil("Plin")
+    if plin == "3d":
+        plin_osnova = plin_osnova + (baza["Plin"].iloc[-3 * 96:].mean() - baza["Plin"].mean())
+    n["Plin"] = np.maximum(plin_osnova + par["delez_plina"] * sprememba, 0)
 
     # --- NETO
     proizvodnja = n[["Paks", "Premog", "Plin", "Sonce", "Veter", "Biomasa",
