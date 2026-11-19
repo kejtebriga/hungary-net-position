@@ -225,7 +225,7 @@ if __name__ == "__main__":
     ax.set_title("Merit order: več preostale porabe → dražja elektrika", pad=40)
     ax.legend(ncol=3, loc="lower center", bbox_to_anchor=(0.5, 1.02), fontsize=7.5)
     fig.text(0.99, -0.03, "Dnevna povprečja, lokalni čas. TTF = zadnja znana cena plina. "
-             "Vir: Energy-Charts, investing.com", ha="right", fontsize=7, color="#666666")
+             "Vir: Energy-Charts, investing.com", ha="right", fontsize=9.5, color="#666666")
     shrani(fig, "c1_merit_order", FIG_C)
 
     # --- GRAF c2: dnevne cene t45, t46 in napoved t47

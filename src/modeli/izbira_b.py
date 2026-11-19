@@ -99,7 +99,7 @@ if __name__ == "__main__":
                  f"(razpon {sr + q10:.0f} do {sr + q90:.0f})", pad=24)
     ax.legend(ncol=2, loc="lower center", bbox_to_anchor=(0.5, 1.0))
     fig.text(0.99, -0.03, "15-min vrednosti, lokalni čas; + izvoz, − uvoz. Razpon iz testa "
-             "na tednih okt–dec 2023–2026.", ha="right", fontsize=7, color="#666666")
+             "na tednih okt–dec 2023–2026.", ha="right", fontsize=9.5, color="#666666")
     shrani(fig, "b1_napoved_t47_izbrani", FIG_B)
 
     # --- PREVERJANJE (po zamrznitvi): dejanski dnevi tedna 47, ki so že znani

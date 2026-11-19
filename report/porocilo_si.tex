@@ -1,0 +1,347 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[slovene]{babel}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=1.9cm,top=1.6cm,bottom=1.8cm]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xurl}
+\usepackage[font=small,labelfont=bf,skip=3pt]{caption}
+\usepackage{parskip}
+\setlength{\parskip}{4pt}
+\usepackage{titlesec}
+\titlespacing*{\section}{0pt}{8pt}{3pt}
+\titlespacing*{\subsection}{0pt}{6pt}{2pt}
+\graphicspath{{../figures/a/}{../figures/b/}{../figures/c/}}
+\newcommand{\m}{$-$}
+
+\begin{document}
+
+\begin{center}
+{\Large\bfseries Neto pozicija madžarskega elektroenergetskega sistema}\\[3pt]
+Avtor: Veronika Tomažič
+\end{center}
+
+\begin{itemize}\setlength\itemsep{2pt}
+\item \textbf{a)} Madžarska elektriko stalno uvaža: od leta 2015 v povprečju 1000–1400\,MW, kar je približno
+četrtina porabe. Skoraj polovico domače elektrike proizvede jedrska elektrarna Paks, ki dela ves čas enako.
+Plinske elektrarne delajo, ko je elektrika draga, sončnih elektrarn pa je vsako leto več in opoldne uvoz
+skoraj izničijo. Elektriko kupuje na severu (Slovaška, Avstrija), del jo proda na jug.
+\item \textbf{b)} Za teden 47 napovedujemo povprečni neto položaj \textbf{\m1873\,MW} (uvoz, $\approx$\,\m315\,GWh),
+z razponom \textbf{\m2146 do \m1483\,MW} (80\,\%). Napoved je izbrana med 18 modeli, preverjenimi na 202 tednih.
+\item \textbf{c)} Povprečna dan-vnaprej cena v tednu 47 bo po naši oceni \textbf{nižja} od tedna 45
+(290,98\,€/MWh), približno \textbf{260–275\,€/MWh}. Glavni razlog je precej močnejši veter v Nemčiji, ki
+poceni elektriko v celi regiji, medtem ko je cena plina enaka.
+\end{itemize}
+
+Analiza temelji na javnih podatkih od leta 2015 do 15.\,11.\,2026 v 15-minutni ločljivosti: proizvodnja po
+vrstah elektrarn, poraba, čezmejno trgovanje in dan-vnaprej cene (Energy-Charts, ki povzema uradne podatke
+ENTSO-E), vreme za pet večjih madžarskih mest in veter v severni Nemčiji (Open-Meteo) ter cena plina TTF
+(investing.com). Vsi časi so v srednjeevropskem času (CET).
+
+% =====================================================================
+\subsection*{a) Neto pozicija Madžarske}
+
+Neto pozicija je razlika med proizvodnjo in porabo in je enaka razliki med izvozom in uvozom.
+Predznak je kot v nalogi: \textbf{+ pomeni izvoz, \m\ pomeni uvoz}.
+
+\subsection*{Kaj proizvaja elektriko}
+
+Madžarska ima nekaj glavnih vrst elektrarn, ki delujejo zelo različno (tabela~\ref{tab:teh}). Jedrska
+elektrarna Paks proizvede skoraj polovico domače elektrike in dela ves čas z enako močjo. Plinske elektrarne
+delajo takrat, ko je elektrika draga, na primer zvečer in pozimi. Ko je elektrika poceni, jih ugasnejo in
+elektriko raje uvozijo, zato se njihova proizvodnja najbolj spreminja. Sončne elektrarne proizvajajo samo
+podnevi in ob lepem vremenu, njihova elektrika pa je skoraj zastonj. Lignitna elektrarna Mátra se postopno
+zapira, vetrnih in hidroelektrarn pa je na Madžarskem malo.
+
+\begin{table}[H]
+\centering\small
+\footnotesize\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrll}
+\toprule
+vrsta & TWh & delež & način delovanja & strošek / vloga pri ceni \\
+\midrule
+jedrska (Paks) & 15,2 & 45\,\% & enakomerno; izpadi ob revizijah & nizek \\
+plin & 7,4 & 22\,\% & prilagodljivo, ob visoki ceni & visok; pogosto določa ceno \\
+sonce & 6,8 & 20\,\% & samo podnevi, odvisno od vremena & skoraj nič; opoldne zniža ceno \\
+lignit & 1,5 & 5\,\% & stabilno, upada & srednji \\
+biomasa, veter, voda, drugo & 2,9 & 8\,\% & majhni in stabilni & nizek \\
+\midrule
+\textbf{proizvodnja / poraba / neto} & \multicolumn{4}{l}{\textbf{34,0 / 43,2 / \m9,5 TWh} (uvoz $\approx$ 22\,\% porabe)} \\
+\bottomrule
+\end{tabular}
+\caption{Vrste elektrarn (vse elektrarne iste vrste skupaj), leto 2025.}
+\label{tab:teh}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\linewidth]{a1b_letni_trend_s_soncem.pdf}
+\caption{Proizvodnja po vrstah elektrarn in poraba, letna povprečja 2020–2026.}
+\label{fig:trend}
+\end{figure}
+
+Slika~\ref{fig:trend} kaže, kako se je to spreminjalo od leta 2020; prej v podatkih ni sončnih elektrarn,
+zato starejših let na sliki ni. Razlika med stolpci in črto porabe je uvoz. Lignita je vsako leto manj (s 681\,MW
+leta 2015 na 160\,MW leta 2026), sončnih elektrarn pa vsako leto več (s 181\,MW leta 2020 na 946\,MW leta 2026).
+Letos proizvedejo skoraj toliko kot plin. Paks je bil 10 let skoraj enak ($\sim$1720\,MW), letos pa je nižji
+(1558\,MW), ker je poleti zaradi nizke Donave delal manj. Uvoz je ves čas ostal podoben, med 1000 in 1400\,MW
+(tudi v letih 2015–2019), ker je izpad lignita in Paksa nadomestilo sonce.
+
+
+\subsection*{Kaj poganja porabo}
+
+Poraba je skozi leta skoraj nespremenjena ($\sim$4900\,MW v povprečju), zelo pa se spreminja s
+temperaturo in z dnevom v tednu. Vpliv temperature ni enak skozi vse leto (slika~\ref{fig:temp}):
+nad približno 15,5\,°C temperatura na porabo skoraj ne vpliva, pod to mejo pa se začne ogrevanje in
+\textbf{vsaka stopinja manj poveča porabo za $\sim$95\,MW}. Če bi skozi vse točke potegnili eno ravno črto,
+bi dobili le $\sim$47\,MW/°C in bi vpliv mraza pozimi podcenili; zalomljena črta se podatkom prilega
+bistveno bolje (povprečna napaka 220 namesto 325\,MW). Poleti nad $\sim$22\,°C porabo spet dvignejo
+klimatske naprave. Vpliv temperature se s časom povečuje (2015–2026: 66\,MW/°C, 2022–2026: 94\,MW/°C), verjetno
+zaradi več toplotnih črpalk in klim. Ob vikendih je poraba nižja, ker industrija in podjetja ne
+delajo: sobota $\sim$9,5\,\%, nedelja $\sim$13,5\,\% pod povprečjem delovnih dni.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\linewidth]{a5a_poraba_temperatura.pdf}
+\caption{Dnevna poraba proti dnevni temperaturi (delovni dnevi brez praznikov) za tri obdobja. Ravna črta
+(črtkano) proti zalomljeni črti, ki loči ogrevanje, nevtralno območje in hlajenje.}
+\label{fig:temp}
+\end{figure}
+
+\subsection*{Prek katerih meja trguje}
+
+Madžarska je povezana z vsemi sedmimi sosedi; zmogljivost povezav je približno polovica nameščene
+moči elektrarn. Uvaža s severa, predvsem iz Slovaške in Avstrije, del te elektrike pa trguje naprej proti
+jugu (Hrvaška, Romunija, Slovenija, zadnja leta tudi Ukrajina) – je torej \textbf{tranzitna država}
+(tabela~\ref{tab:meje}). Pri branju podatkov po mejah je treba paziti: pri povezanem evropskem trgu
+izmenjave po posameznih mejah niso dvostranski posli med trgovci, ampak rezultat izračuna algoritma
+trga. Zanesljiva in ekonomsko smiselna je predvsem njihova vsota, torej neto pozicija.
+
+\begin{table}[H]
+\centering\small
+\caption{Neto trgovanje po mejah, MW (letna povprečja; + izvoz iz HU, \m\ uvoz v HU). 2026: do 15.\,11.}
+\label{tab:meje}
+\begin{tabular}{lrrrrrrrr}
+\toprule
+ & Slovaška & Avstrija & Romunija & Hrvaška & Srbija & Slovenija & Ukrajina & \textbf{skupaj} \\
+\midrule
+2024 & \m1029 & \m893 & +378 & +281 & \m38 & \m153 & +185 & \textbf{\m1268} \\
+2025 & \m1246 & \m746 & +612 & +350 & \m82 & \m34 & +65 & \textbf{\m1082} \\
+2026 & \m1099 & \m495 & \m65 & +335 & \m195 & +102 & +186 & \textbf{\m1233} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection*{Kako se spreminja čez dan in čez leto}
+
+\textbf{Čez leto} je uvoz pozimi skoraj dvakrat večji kot spomladi in poleti (slika~\ref{fig:mes}): novembra
+in decembra $\sim$\m1700\,MW, aprila–julija $\sim$\m900\,MW. Razlika se je od 2020 povečala: sonce poleti
+uvoz zmanjša, pozimi ga skoraj ni (december 174\,MW, junij 985\,MW), lignit, ki je prej pomagal pozimi,
+pa je skoraj izginil. Plin poleti proizvaja $\sim$500–600\,MW, pozimi $\sim$1150–1230\,MW.
+
+\textbf{Čez dan} sonce popolnoma spremeni sliko (slika~\ref{fig:profil}). Jeseni se je opoldanski neto
+položaj s $\sim$\m1300\,MW (2020) dvignil na skoraj nič ali celo rahel izvoz (2026); spomladi in poleti
+je Madžarska opoldne že izvoznica (+500 do +640\,MW). Zvečer, ko sonca ni in je poraba največja, pa
+ostaja uvoz velik ($\sim$\m2300 do \m2500\,MW). Ker sonce proizvaja vse hkrati, pade cena ravno takrat:
+megavatna ura sončne elektrike je bila leta 2025 vredna le 57\,\% povprečne cene (leta 2020 še 89\,\%),
+plin pa, ki dela v dragih urah, $\sim$120\,\%.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\linewidth]{a3a_mesecno_poraba_neto.pdf}
+\caption{Poraba in neto pozicija po mesecih za tri obdobja (povprečje let v obdobju).}
+\label{fig:mes}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\linewidth]{a4b_profil_okt_nov_po_letih.pdf}
+\caption{Neto pozicija čez dan v oktobru in novembru, po letih (15-min vrednosti, lokalni čas).
+Opoldne sonce uvoz skoraj izniči, zvečer je uvoz največji.}
+\label{fig:profil}
+\end{figure}
+
+% =====================================================================
+\subsection*{b) Napoved neto položaja za teden 47}
+
+\subsection*{Kaj bo vplivalo na neto položaj}
+
+Napoved temelji na formuli iz naloge: \emph{neto = proizvodnja \m\ poraba}. Najprej smo preverili, katere
+vrste elektrarn se iz tedna v teden sploh spreminjajo, saj za napoved ni pomembno, kdo proizvede največ,
+ampak kdo se najbolj spreminja. V letih 2023–2026 se je tedensko povprečje v povprečju spremenilo za:
+\textbf{porabo 246\,MW, plin 143\,MW, sonce 136\,MW in Paks 105\,MW}; veter, lignit, biomasa, voda in ostalo pa
+le za 4–32\,MW. Na neto položaj torej vplivajo štirje dejavniki:
+\begin{itemize}\setlength\itemsep{1pt}
+\item \textbf{temperatura → poraba}: v tednu 47 je napovedana povprečna temperatura 7,2\,°C (teden 46: 6,5\,°C);
+začetek tedna je toplejši (do 10,5\,°C v sredo), konec tedna hladnejši (3,5–4,7\,°C);
+\item \textbf{sonce}: napovedano je več sonca kot v oblačnem tednu 46 (sevanje $\sim$1,3\,kWh/m$^2$ na dan
+proti $\sim$0,9), a manj kot v tednu 45;
+\item \textbf{Paks}: po uradnem obvestilu na ENTSO-E (objavljeno 6.\,11.) je en reaktor v načrtovani reviziji do
+$\sim$28.\,12., razpoložljivost je 1437\,MW – Paks bo torej enak kot v tednu 46 ($\sim$1460\,MW);
+\item \textbf{plin}: najbolj negotov dejavnik, ker se odloča po ceni – ko je elektrika v regiji poceni,
+plinske elektrarne ne delajo in Madžarska uvaža. V petek 13.\,11. je plin padel z $\sim$1700 na $\sim$650\,MW.
+\end{itemize}
+
+\subsection*{Pristop: 18 modelov, preverjenih na 202 tednih}
+
+Ker je odločitev za en sam pristop lahko naključna, smo primerjali 18 modelov, od najpreprostejših do
+nevronskih mrež (slika~\ref{fig:modeli}). Vsak je moral za vsak teden od januarja 2023 do 15.\,11.\,2026
+(202 tedna) napovedati naslednji teden \emph{samo s podatki do nedelje pred njim}, njegovo napako pa smo
+primerjali z naivno napovedjo »enako kot prejšnji teden« (ki ima vrednost 1). Skupine modelov:
+\begin{itemize}\setlength\itemsep{1pt}
+\item \textbf{preprosti}: kot prejšnji teden, kot lani, povprečje zadnjih 2 ali 4 tednov;
+\item \textbf{en dejavnik}: zadnja dva tedna + popravek samo za temperaturo, samo za sonce, samo za Paks ali samo za plin;
+\item \textbf{vse skupaj}: linearna regresija z vsemi dejavniki, model »po formuli« (vsak vir posebej, nato
+proizvodnja \m\ poraba), podobni dnevi iz preteklosti, nevronski mreži (dnevna in za ves 15-min profil);
+\item \textbf{kombinacije}: povprečje več modelov.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\linewidth]{b3_primerjava_modelov.pdf}
+\caption{Napaka tedenske napovedi glede na naivni model (manj je bolje), test 202 tednov 2023–2026.}
+\label{fig:modeli}
+\end{figure}
+
+Ugotovitve testa: najboljša sta linearna regresija in kombinacija regresije, modela po formuli in podobnih
+dni – oba za \textbf{34\,\% boljša od naivne napovedi}; model po formuli iz naloge je takoj za njima (31\,\%).
+Izmed posameznih dejavnikov najbolj pomaga sonce, plin sam pa nič, ker je preveč nepredvidljiv.
+Nevronski mreži nista boljši od regresije – za zapletene modele imamo premalo podatkov ($\sim$1300 dni), zato se
+lahko naučijo tudi šuma. Kot končni model smo izbrali \textbf{kombinacijo}, ker je bila v jesenskih tednih
+(oktober–december) najboljša. Pravilo izbire je bilo določeno vnaprej, pred napovedjo tedna 47.
+Opomba: v testu je uporabljeno izmerjeno vreme, zato je test nekoliko preveč optimističen.
+
+\subsection*{Napoved}
+
+Napoved je narejena z izbranim modelom samo s podatki do nedelje 15.\,11.\,2026, 23:45. Tabela~\ref{tab:napoved}
+kaže napoved po dnevih. Stolpci pomenijo:
+\begin{itemize}\setlength\itemsep{1pt}
+\item \textbf{povprečna moč (MW)}: koliko elektrike Madžarska v povprečju uvaža v vsakem trenutku dneva
+(povprečje 96 četrtur dneva; \m\ pomeni uvoz);
+\item \textbf{energija (GWh)}: koliko elektrike skupaj uvozi v tem dnevu (povprečna moč × 24\,h);
+\item \textbf{največ / najmanj uvoza}: najmočnejša in najšibkejša četrtura dneva.
+\end{itemize}
+\textbf{Teden} pri moči je povprečje sedmih dni, pri energiji pa njihova vsota; povezuje ju število ur v tednu: $314{,}7\,\mathrm{GWh} / 168\,\mathrm{h} = 1873\,\mathrm{MW}$.
+
+\begin{table}[H]
+\centering\small
+\caption{Napoved neto položaja za teden 47 po dnevih (\m\ = uvoz; lokalni čas CET).}
+\label{tab:napoved}
+\begin{tabular}{lrrll}
+\toprule
+dan & povprečna moč (MW) & energija (GWh) & največ uvoza & najmanj uvoza \\
+\midrule
+pon 16.\,11. & \m2201 & \m52,8 & \m3121 ob 19:15 & \m925 ob 11:15 \\
+tor 17.\,11. & \m1942 & \m46,6 & \m2862 ob 19:15 & \m666 ob 11:15 \\
+sre 18.\,11. & \m1732 & \m41,6 & \m2652 ob 19:15 & \m457 ob 11:15 \\
+čet 19.\,11. & \m1811 & \m43,5 & \m2731 ob 19:15 & \m536 ob 11:15 \\
+pet 20.\,11. & \m1890 & \m45,4 & \m2810 ob 19:15 & \m614 ob 11:15 \\
+sob 21.\,11. & \m1790 & \m43,0 & \m2710 ob 19:15 & \m515 ob 11:15 \\
+ned 22.\,11. & \m1748 & \m41,9 & \m2668 ob 19:15 & \m472 ob 11:15 \\
+\midrule
+\textbf{teden 47} & \textbf{\m1873} (povprečje) & \textbf{\m314,7} (vsota) & & \\
+razpon (80\,\%) & \m2146 do \m1483 & \m360,5 do \m249,1 & & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\linewidth]{b1_napoved_t47_izbrani.pdf}
+\caption{Napoved neto pozicije za teden 47 po 15 minutah (lokalni čas) z razponom 10–90\,\%.
+Črtkana vodoravna črta je povprečje tedna (\m1873\,MW).}
+\label{fig:napoved}
+\end{figure}
+
+Razpon je izračunan iz napak modela v jesenskih tednih testa: v 8 od 10 podobnih tednov je bil dejanski
+neto položaj v tem pasu. Vsak dan je uvoz najmanjši okoli 11:00, ko proizvaja sonce, in največji okoli 19:00,
+ko sonca ni in je poraba visoka. Največ uvoza pričakujemo v ponedeljek (hladneje in oblačno), najmanj v
+sredo (najtopleje, več sonca). Ob vikendu je poraba nižja, a je hladneje, zato se uvoz ne zmanjša veliko.
+
+% =====================================================================
+\subsection*{c) Ali bo cena v tednu 47 višja ali nižja od 290,98\,€/MWh?}
+
+\subsection*{Logika: merit order}
+
+Elektrarne so razvrščene od najcenejše do najdražje (sonce, veter, voda → jedrska → lignit → plin), ceno pa
+določa najdražja, ki je še potrebna. Za Madžarsko so poleg domačih elektrarn del te »vrste« tudi
+sosednji trgi: ko je elektrika pri sosedih poceni, Madžarska uvaža namesto da bi vklopila plin. Zato je cena
+približno \textbf{cena plina × faktor}: faktor je večji, ko je doma veliko »preostale porabe« (poraba \m\ sonce
+\m\ veter \m\ Paks – to, kar morata pokriti plin in uvoz), in manjši, ko v regiji piha
+(slika~\ref{fig:merit}). Razmerje med ceno elektrike in ceno plina TTF je bilo v letih 2021–2026 večinoma
+med 2 in 3.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\linewidth]{c1_merit_order.pdf}
+\caption{Razmerje med ceno elektrike in ceno plina proti preostali porabi na Madžarskem (dnevne vrednosti,
+zadnjih 12 mesecev). Več preostale porabe pomeni dražje elektrarne in višjo ceno.}
+\label{fig:merit}
+\end{figure}
+
+\subsection*{Dejavniki od tedna 45 do tedna 47}
+
+\begin{table}[H]
+\centering\small
+\caption{Dejavniki cene (tedenska povprečja; teden 47 = napoved z dne 14.\,11. ali zadnja znana vrednost).}
+\footnotesize\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrl}
+\toprule
+dejavnik & teden 45 & teden 46 & teden 47 & vpliv na ceno t47 proti t45 \\
+\midrule
+veter v severni Nemčiji (km/h) & 17,4 & 23,2 & \textbf{29,5} & \textbf{močno navzdol} (poceni regija) \\
+temperatura HU (°C) & 5,3 & 6,5 & 7,2 & navzdol: manj ogrevanja \\
+cena plina TTF (€/MWh) & 90,2 & 87,4 & 91,0 & nevtralno \\
+Paks (MW) & 1422 & 1458 & 1460 & nevtralno \\
+sonce HU (MW) & 653 & 288 & 426 & navzgor: manj sonca kot v t45 \\
+preostala poraba HU (MW) & 3349 & 3943 & 3581 & rahlo navzgor \\
+cena HU (€/MWh) & 291,0 & 285,9 & ? & t46 je že pod t45 \\
+cene AT / SK / DE (€/MWh) & 287 / 293 / 257 & 280 / 286 / 245 & ? & v t46 povsod nižje \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Domači dejavniki so mešani: toplejše vreme ceno znižuje, manj sonca kot v tednu 45 in nekoliko več preostale
+porabe pa jo dvigujeta. Cena plina je praktično enaka, zato plin smeri ne določa. Odloči \textbf{veter v
+Nemčiji}, ki bo po napovedi skoraj dvakrat močnejši kot v tednu 45. Ker je Madžarska tesno povezana s sosedi,
+poceni elektrika v Nemčiji in Avstriji zniža ceno tudi na Madžarskem – pri sosedih so se cene v tednu 46 že
+znižale.
+
+\subsection*{Preverjanje s cenovnimi modeli}
+
+Štiri cenovne modele smo preverili na 150 tednih (od 2024, ker so podatki o vetru v Nemčiji na voljo od 2023):
+kolikokrat pravilno ugotovijo, ali bo teden dražji ali cenejši od tedna dva tedna prej (tako kot teden 47
+proti tednu 45).
+
+\begin{table}[H]
+\centering\small
+\caption{Cenovni modeli: test 150 tednov in napoved za teden 47.}
+\footnotesize\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrr}
+\toprule
+model & napaka tedna (€/MWh) & pravilna smer & teden 47 (€/MWh) \\
+\midrule
+linearna regresija (TTF, preostala poraba, veter DE, dan) & \textbf{15,6} & 74\,\% & \textbf{263} \\
+nevronska mreža (isti vhodi) & 16,8 & 75\,\% & 263 \\
+naivni (kot prejšnji teden) & 17,3 & 74\,\% & 286 \\
+merit order, le podatki HU (TTF × faktor) & 20,8 & 68\,\% & 293 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Trije od štirih modelov in v testu najboljši model napovedujejo nižjo ceno. Merit order samo z madžarskimi
+podatki se v testu odreže najslabše, ker madžarsko ceno močno določajo sosedje.
+
+\textbf{Odločitev: povprečna cena v tednu 47 bo nižja od 290,98\,€/MWh}, približno 260–275\,€/MWh (base).
+Povezava z b): isti vzrok – poceni elektrika v regiji ob vetru – pomeni tudi, da bodo madžarske plinske
+elektrarne delale manj in bo uvoz večji.
+
+\textbf{Tveganja:} močan mraz ali brezvetrje (napoved vetra se lahko spremeni), nenaden skok cene plina,
+nenačrtovan izpad v Paksu ali pri sosedih. Odločitev se obrne, če bi bil veter v Nemčiji šibkejši od tedna 45.
+
+\end{document}

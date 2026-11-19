@@ -153,8 +153,9 @@ def izris_virov(letno, poraba, skupine, naslov, ime, opomba, neto=None):
     else:
         ax_x = ax1
     ax_x.set_xticks(x, oznaka_leta(leta))
-    fig.text(0.99, -0.01, f"{opomba}   * 2026: 1. 1. – 15. 11.   "
-             "Vir: Energy-Charts", ha="right", fontsize=7, color="#666666")
+    if opomba:   # za poročilo brez opombe (pojasnilo je v opisu slike)
+        fig.text(0.99, -0.01, f"{opomba}   * 2026: 1. 1. – 15. 11.   "
+                 "Vir: Energy-Charts", ha="right", fontsize=9.5, color="#666666")
     shrani(fig, ime)
 
 
@@ -204,7 +205,7 @@ def graf2():
     ax.legend(ncol=8, fontsize=7.5, loc="lower center",
               bbox_to_anchor=(0.5, 1.0), handlelength=1.0, columnspacing=0.9)
     fig.text(0.99, -0.01, "* 2026: 1. 1. – 15. 11.   Vir: Energy-Charts "
-             "(trgovanje, ne fizični tokovi)", ha="right", fontsize=7,
+             "(trgovanje, ne fizični tokovi)", ha="right", fontsize=9.5,
              color="#666666")
     shrani(fig, "a2_meje_po_letih")
 
@@ -272,7 +273,7 @@ def graf3():
     a2.axhline(0, color="#333333", lw=0.8)
     a2.set_xticks(x, MESECI)
     fig.text(0.99, -0.01, "Povprečje vseh let v obdobju.  Vir: Energy-Charts",
-             ha="right", fontsize=7, color="#666666")
+             ha="right", fontsize=9.5, color="#666666")
     shrani(fig, "a3a_mesecno_poraba_neto")
 
     # viri po mesecih – za vsako obdobje (2015–2026 brez sonca)
@@ -306,7 +307,7 @@ def graf3():
               bbox_to_anchor=(0.5, 1.03), handlelength=1.2)
     ax.set_title("Proizvodnja po virih in poraba po mesecih, 2022–2026", pad=40)
     fig.text(0.99, -0.01, "Razlika med porabo in proizvodnjo = uvoz.  "
-             "Vir: Energy-Charts", ha="right", fontsize=7, color="#666666")
+             "Vir: Energy-Charts", ha="right", fontsize=9.5, color="#666666")
     shrani(fig, "a3b_mesecno_viri_2022_2026")
 
 
@@ -342,7 +343,7 @@ def graf4():
     fig.suptitle("Neto pozicija čez dan po letnih časih (+ izvoz, − uvoz)",
                  y=1.04)
     fig.text(0.99, -0.01, "15-min termini, lokalni čas (CET/CEST).  "
-             "Vir: Energy-Charts", ha="right", fontsize=7, color="#666666")
+             "Vir: Energy-Charts", ha="right", fontsize=9.5, color="#666666")
     shrani(fig, "a4a_dnevni_profil_letni_casi")
     t = pd.DataFrame(urna).round(0)
     print("\nNeto pozicija po urah dneva, MW (urno povprečje 15-min vrednosti, "
@@ -368,7 +369,7 @@ def graf4():
     ax.legend(ncol=7, loc="lower center", bbox_to_anchor=(0.5, 1.0),
               handlelength=1.2)
     fig.text(0.99, -0.06, "2026: okt + 1.–15. nov.  15-min termini, lokalni "
-             "čas.  Vir: Energy-Charts", ha="right", fontsize=7, color="#666666")
+             "čas.  Vir: Energy-Charts", ha="right", fontsize=9.5, color="#666666")
     shrani(fig, "a4b_profil_okt_nov_po_letih")
     print("\nOKT–NOV po letih, neto po urah, MW (urno povprečje, lokalni čas)\n"
           + pd.DataFrame(tab).round(0).T.to_string())
@@ -445,7 +446,7 @@ def graf5():
     osi[0].legend(loc="lower center", bbox_to_anchor=(1.6, 1.12), ncol=2)
     fig.suptitle("Poraba in temperatura (delovni dnevi, brez praznikov)", y=1.12)
     fig.text(0.99, -0.12, "Točka = en dan. Temperatura: tehtano povprečje 5 "
-             "mest.  Vir: Energy-Charts, Open-Meteo", ha="right", fontsize=7,
+             "mest.  Vir: Energy-Charts, Open-Meteo", ha="right", fontsize=9.5,
              color="#666666")
     shrani(fig, "a5a_poraba_temperatura")
     print("\nPoraba vs temperatura: dnevna povprečja (lokalni dan), delovni dnevi "
@@ -479,7 +480,7 @@ def graf5():
     ax.set_title("Poraba po dnevih v tednu (brez praznikov)", pad=22)
     ax.legend(ncol=3, loc="lower center", bbox_to_anchor=(0.5, 1.0))
     fig.text(0.99, -0.02, "Os y se ne začne pri 0.  Vir: Energy-Charts",
-             ha="right", fontsize=7, color="#666666")
+             ha="right", fontsize=9.5, color="#666666")
     shrani(fig, "a5b_poraba_dnevi_v_tednu")
 
 
@@ -536,7 +537,7 @@ def graf6():
     ax.legend(ncol=5, loc="lower center", bbox_to_anchor=(0.5, 1.0),
               fontsize=7.5, handlelength=1.6)
     fig.text(0.99, -0.02, "Vrednost = s proizvodnjo tehtana cena.  * 2026: do "
-             "15. 11.  Vir: Energy-Charts", ha="right", fontsize=7,
+             "15. 11.  Vir: Energy-Charts", ha="right", fontsize=9.5,
              color="#666666")
     shrani(fig, "a6_capture_price")
 

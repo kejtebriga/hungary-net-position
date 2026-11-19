@@ -59,3 +59,22 @@ report/        poročilo (LaTeX) in zamrznjena napoved tedna 47
 - Vsi časi v podatkih so v UTC; za prikaz se pretvorijo v srednjeevropski čas.
 - Predznaki: neto pozicija in meje so **+ = izvoz, − = uvoz** (Energy-Charts uporablja obratno konvencijo; pretvorba je v kodi).
 - Napoved za teden 47 uporablja izključno podatke, znane do nedelje 15. 11. 2026, 23:45.
+
+## Viri
+
+### Podatki
+- [Energy-Charts](https://www.energy-charts.info) (Fraunhofer ISE) – proizvodnja po vrstah elektrarn, poraba, čezmejno trgovanje, cene; na osnovi ENTSO-E
+- [ENTSO-E Transparency Platform](https://transparency.entsoe.eu) – preverjanje podatkov, obvestila o razpoložljivosti elektrarne Paks
+- [Open-Meteo](https://open-meteo.com) – temperatura in sončno sevanje (5 madžarskih mest), veter v severni Nemčiji; arhiv in napoved
+- [Investing.com – Dutch TTF](https://www.investing.com/commodities/dutch-ttf-gas-c1-futures-historical-data) – cena plina
+- [Electricity Maps – Grid Review 2025: Hungary](https://www.electricitymaps.com/grid-in-review-2025/hungary) – neodvisna kontrola letnih vrednosti
+
+### Članki
+- Lago, Marcjasz, De Schutter, Weron (2021): *Forecasting day-ahead electricity prices: A review of state-of-the-art algorithms, best practices and an open-access benchmark.* Applied Energy 293 – [arXiv:2008.08004](https://arxiv.org/abs/2008.08004)
+- Jędrzejewski, Lago, Marcjasz, Weron (2022): *Electricity Price Forecasting: The Dawn of Machine Learning.* IEEE Power & Energy Magazine – [arXiv:2204.00883](https://arxiv.org/abs/2204.00883)
+- Ghelasi, Ziel (2025): *A data-driven merit order: Learning a fundamental electricity price model.* Energy Economics – [arXiv:2501.02963](https://arxiv.org/abs/2501.02963)
+- Stiewe, Xu, Eicke, Hirth (2024): *Cross-border cannibalization: spillover effects of wind and solar energy on interconnected European electricity markets* – [arXiv:2405.17166](https://arxiv.org/abs/2405.17166)
+- *Where do Germany's electricity imports come from?* (2025) – [arXiv:2504.20232](https://arxiv.org/abs/2504.20232)
+- Gulyás, Palkovics, Gondola (2024): *Analysis of Potential Energy Transition Schemes in Hungary: from Natural Gas to Electricity.* Chemical Engineering Transactions 114 – [PDF](https://cetjournal.it/cet/24/114/146.pdf)
+
+Podrobnejši povzetki člankov: [literatura/povzetki_clankov.md](literatura/povzetki_clankov.md).
