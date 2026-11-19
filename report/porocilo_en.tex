@@ -27,37 +27,34 @@ Author: Veronika Tomažič
 \end{center}
 
 \begin{itemize}\setlength\itemsep{2pt}
-\item \textbf{a)} Hungary is a permanent net importer of electricity: since 2015 it has imported on average
-1000–1400\,MW, about a quarter of its consumption. Almost half of domestic electricity comes from the Paks nuclear
-power plant, which runs at a constant output. Gas-fired plants run when electricity is expensive, while solar
-capacity grows every year and almost eliminates imports around midday. Hungary buys electricity in the north
+\item[\textbf{a)}] Hungary is a permanent net importer of electricity: since 2015 it imports on average
+1000–1400\,MW, which is about a quarter of its consumption. Almost half of its domestic electricity comes from the Paks nuclear
+power plant, which runs at a constant output. Gas power plants run when electricity is expensive, while there are more solar power plants every year that almost eliminate import around midday. Hungary buys electricity in the north
 (Slovakia, Austria) and sells part of it on to the south.
-\item \textbf{b)} For week 47 I forecast an average net position of \textbf{\m1873\,MW} (imports, $\approx$\,\m315\,GWh),
+\item[\textbf{b)}] For week 47 I forecast an average net position of \textbf{\m1873\,MW} (imports, $\approx$\,\m315\,GWh),
 with a range of \textbf{\m2146 to \m1483\,MW} (80\,\%). The forecast was selected from 18 models tested on 202 weeks.
-\item \textbf{c)} In my view, the average day-ahead price in week 47 will be \textbf{lower} than in week 45
-(290.98\,€/MWh), at about \textbf{260–275\,€/MWh}. The main reason is much stronger wind in Germany, which makes
-electricity cheaper across the whole region, while the gas price is unchanged.
+\item[\textbf{c)}] According to my estimates, the average day-ahead price in week 47 will be \textbf{lower} than in week 45
+(290.98\,€/MWh), at about \textbf{260–275\,€/MWh}. The main reason will be significantly stronger winds in Germany, which will drive down the price of electricity throughout the region, while the price of natural gas will remain the same.
 \end{itemize}
 
-The analysis is based on public data from 2015 to 15 Nov 2026 at 15-minute resolution: generation by plant type,
+The analysis is based on publicly accessible data from 2015 to 15th of November 2026 in 15-minute resolution: generation by plant type,
 consumption, cross-border trading and day-ahead prices (Energy-Charts, which compiles official ENTSO-E data),
 weather for five large Hungarian cities and wind in northern Germany (Open-Meteo), and the TTF gas price
 (investing.com). All times are in Central European Time (CET).
 
 % =====================================================================
-\subsection*{a) Hungary's net position}
+\subsection*{a) Hungary's Net Position}
 
 The net position is the difference between generation and consumption and equals the difference between
-exports and imports. The sign follows the task: \textbf{+ means export, \m\ means import}.
+exports and imports. The sign is as shown in the task: \textbf{+ means export, \m\ means import}.
 
-\subsection*{What generates the power}
+\subsection*{What Generates the Power}
 
 Hungary has a few main types of power plants that operate very differently (Table~\ref{tab:teh}). The Paks
 nuclear power plant produces almost half of domestic electricity and runs at a constant output. Gas-fired plants
 run when electricity is expensive, for example in the evening and in winter. When electricity is cheap, they are
-switched off and electricity is imported instead, so their output changes the most. Solar plants produce only
-during the day and in good weather, but their electricity is almost free. The Mátra lignite plant is being
-gradually phased out, and there are few wind and hydro plants in Hungary.
+switched off and electricity is imported instead, so their output changes the most. Solar plants only produce during the day and in good weather, and their electricity is almost free. The Mátra lignite plant is being
+gradually phased out, and there are only a few wind and hydro plants in Hungary.
 
 \begin{table}[H]
 \centering\footnotesize
@@ -87,30 +84,27 @@ biomass, wind, hydro, other & 2.9 & 8\,\% & small and stable & low \\
 \end{figure}
 
 Figure~\ref{fig:trend} shows how this has changed since 2020; earlier years are not shown because solar plants
-are missing from the data before then. The gap between the bars and the consumption line is the import. Lignite
+are missing from the data. The gap between the bars and the consumption line is the import. Lignite
 declines every year (from 681\,MW in 2015 to 160\,MW in 2026), while solar grows every year (from 181\,MW in 2020 to
-946\,MW in 2026). This year solar produces almost as much as gas. Paks was almost constant for 10 years
-($\sim$1720\,MW), but this year it is lower (1558\,MW) because it produced less in summer due to the low level of
-the Danube. Imports have stayed similar throughout, between 1000 and 1400\,MW (also in 2015–2019), because solar
+946\,MW in 2026). This year solar produced almost as much as gas. Paks was almost constant for 10 years
+($\sim$1720\,MW), but was lower this year (1558\,MW) because it produced less in summer due to the low level of the Danube river. Imports have stayed similar throughout, between 1000 and 1400\,MW (also in 2015–2019), because solar
 has replaced the loss of lignite and Paks.
 
 
-\subsection*{What drives consumption}
+\subsection*{What Drives Consumption}
 
 Consumption is almost the same over the years, about 4900\,MW on average, but it changes considerably from day
 to day. It depends mainly on temperature and on whether it is a working day or a weekend.
 
-When it is warm (above $\sim$15\,°C), temperature has almost no effect on consumption. When it is colder, people
-heat, so every degree lower increases consumption by $\sim$95\,MW (Figure~\ref{fig:temp}, right panel:
-2022–2026). In summer, when it is very hot (above $\sim$22\,°C), cooling increases consumption again. If the effect
-of temperature were estimated with one straight line over the whole year, it would be only $\sim$47\,MW per
+When it is warm (above $\sim$15\,°C), temperature has almost no effect on consumption. When it is colder, people heat their homes, so every degree drop increases consumption by $\sim$95\,MW (Figure~\ref{fig:temp}, right panel:
+2022–2026). In summer, when it is very hot (above $\sim$22\,°C), cooling increases consumption again. If the effects of outside temperatures were estimated with one straight line over the whole year, it would be only $\sim$47\,MW per
 degree and the effect of cold weather would be underestimated.
 
 Figure~\ref{fig:temp} shows three periods: all years (2015–2026), years with solar data (2020–2026) and years
 with the best data (2022–2026). The pattern is the same in all of them, but the effect of cold weather is
 increasing (from $\sim$66 to $\sim$94\,MW per degree), probably because of the growing number of heat pumps.
 
-At weekends consumption is lower because factories and businesses are closed: by $\sim$9\,\% on Saturday and
+On weekends consumption is lower because factories and businesses are closed: by $\sim$9\,\% on Saturday and
 by $\sim$13\,\% on Sunday.
 
 \begin{figure}[H]
@@ -121,11 +115,11 @@ line (dashed) against a piecewise line that separates heating, a neutral zone an
 \label{fig:temp}
 \end{figure}
 
-\subsection*{Which borders it trades over}
+\subsection*{Across Which Borders Does Hungary Trade?}
 
 Hungary is connected to all seven neighbouring countries. Table~\ref{tab:meje} shows the average trade over each
 border per year (+ export, \m\ import). Slovakia and Austria are negative in every year: Hungary buys electricity
-from them, most of it from Slovakia ($\sim$1000–1250\,MW). Croatia is positive in every year: Hungary sells
+from them, most of it from Slovakia ($\sim$1000–1250\,MW). Croatia is positive every year: Hungary sells
 electricity there. For Romania, Serbia and Slovenia the direction changes from year to year. Hungary thus buys
 electricity in the north, uses part of it at home and sells part of it on to the south.
 
@@ -148,15 +142,14 @@ therefore the most reliable figure.
 \label{tab:meje}
 \end{table}
 
-\subsection*{How it changes during the day and the year}
+\subsection*{Changes Throughout the Day and the Year}
 
 \textbf{During the year:} in winter Hungary imports about twice as much electricity as in spring and summer. In
 summer, solar plants reduce imports; in winter there is almost no sun and consumption is higher due to heating,
 so gas-fired plants run more and the rest is imported.
 
 \textbf{During the day:} since I am forecasting a week in November, I looked at the daily pattern for October and
-November in previous years (Figure~\ref{fig:profil}). At midday, when solar plants produce, imports are now
-almost zero, whereas in 2020 they were still $\sim$1300\,MW. In the evening, when there is no sun and consumption
+November in previous years (Figure~\ref{fig:profil}). At midday, when solar plants produce, imports are almost zero, whereas in 2020 they were still $\sim$1300\,MW. In the evening, when there is no sun and consumption
 is highest, Hungary imports the most, $\sim$2300–2500\,MW. This pattern repeats every day and I also see it in the
 forecast for week 47.
 
@@ -169,44 +162,41 @@ solar almost eliminates imports; in the evening imports are highest.}
 \end{figure}
 
 % =====================================================================
-\subsection*{b) Forecast of the net position for week 47}
+\subsection*{b) Net Position Forecast for Week 47}
 
-\subsection*{What will drive the net position}
+\subsection*{What Will Drive the Net Position}
 
 The forecast is based on the formula from the task: \emph{net = generation \m\ consumption} (the formula model,
 labelled 10b in Figure~\ref{fig:modeli}). I therefore first looked at which parts of the formula change the most
-from week to week, because for a forecast it does not matter who produces the most, but who changes the most.
+from week to week, because for a forecast it does not matter who produces the most, but what changes the most.
 Consumption, gas-fired plants, solar and Paks change the most, while the other plants (wind, lignite, biomass,
 hydro) hardly change at all. For week 47 this means:
 \begin{itemize}\setlength\itemsep{1pt}
-\item \textbf{temperature → consumption:} the forecast average temperature for week 47 is 7.2\,°C (week 46:
+\item \textbf{Temperature → consumption:} the forecast average temperature for week 47 is 7.2\,°C (week 46:
 6.5\,°C); the beginning of the week is warmer (up to 10.5\,°C on Wednesday), the end of the week colder
 (3.5–4.7\,°C);
-\item \textbf{solar:} more sun is forecast than in the cloudy week 46 (irradiation $\sim$1.3\,kWh/m$^2$ per day
+\item \textbf{Solar:} more sun is forecast than in the cloudy week 46 (irradiation $\sim$1.3\,kWh/m$^2$ per day
 against $\sim$0.9), but less than in week 45;
-\item \textbf{Paks:} one reactor is in scheduled maintenance until the end of December (official notice on
+\item \textbf{Paks:} one reactor has scheduled maintenance until the end of December (official notice on
 ENTSO-E), so Paks will produce the same as in week 46, $\sim$1460\,MW;
-\item \textbf{gas:} the most uncertain factor, because gas-fired plants only run when electricity is expensive.
+\item \textbf{Gas:} the most uncertain factor, because gas-fired plants only run when electricity is expensive.
 When electricity in the region is cheap, they are switched off and Hungary imports more electricity from its
 neighbours.
 \end{itemize}
 
 \subsection*{Approach}
 
-To choose the best possible forecasting method, I compared 18 different models. I tested each model on past
-weeks. For every week from 1 Jan 2023 to 15 Nov 2026 (202 weeks in total) it had to forecast the net position as
-if that week were still unknown, i.e. using only data up to the Sunday before it. I then compared its forecast
-with the actual net position. As a benchmark I used the simplest possible forecast: that the net position will be
+To choose the best possible forecasting method, I compared 18 different models. I tested each model on data from the past weeks. For every week from 1 Jan 2023 to 15 Nov 2026 (202 weeks in total) the models had to forecast the net position as
+if that week were still unknown, i.e. using only data up to the Sunday before. I then compared its forecasts with the actual net positions. As a benchmark I used the simplest possible forecast: that the net position will be
 the same as in the previous week. A good model has to be better than that. In Figure~\ref{fig:modeli} this simple
 forecast has the value 1; a model with a value below 1 forecasts better, above 1 worse. I divided the models into
 four groups:
 \begin{itemize}\setlength\itemsep{1pt}
-\item \textbf{simple}: same as last week, same as last year, mean of the last 2 or 4 weeks;
-\item \textbf{one driver}: the last two weeks with a correction only for temperature, only for solar, only for
-Paks or only for gas;
-\item \textbf{all drivers}: linear regression with all drivers, the formula model, similar days from the past,
+\item \textbf{Simple}: same as last week, same as last year, mean of the last 2 or 4 weeks;
+\item \textbf{One driver}: the last two weeks with a correction only for temperature, solar, Paks or gas;
+\item \textbf{All drivers}: linear regression with all drivers, the formula model, similar days from the past,
 two neural networks;
-\item \textbf{combinations}: the average of several models.
+\item \textbf{Combinations}: the average of several models.
 \end{itemize}
 
 \begin{figure}[H]
@@ -221,20 +211,18 @@ Test results: the best were the linear regression and the combination of the reg
 similar days – both 34\,\% better than the naive forecast (the forecast that the week will be the same as the
 previous one). The formula model from the task is right behind them (31\,\%). Of the individual drivers, solar
 helps the most, while gas alone does not help at all because it is too unpredictable. The neural networks are not
-better than the regression, because I have too little data for complex models ($\sim$1300 days), so they can also
+better than the regression, because I do not have enough data for complex models ($\sim$1300 days), so they can also
 learn noise. As the final model I chose the combination, because it was the best in the autumn weeks from October
 to December.
 
 The combination of models seemed the most reliable to me. It is the average of three models that reach their
 forecast in different ways:
 \begin{itemize}\setlength\itemsep{1pt}
-\item \textbf{formula model from the task (10b):} forecasts consumption separately (based on the forecast
+\item \textbf{Formula model from the task (10b):} forecasts consumption separately (based on the forecast
 temperature and the day of the week) and each type of power plant, and then calculates net = generation \m\
 consumption;
-\item \textbf{linear regression (9):} one equation that learns from previous years how much each driver changes
-the net position (temperature, solar, Paks, gas in recent days, day of the week, net position of the previous
-week);
-\item \textbf{similar days (11):} finds the 10 most similar days in the last two years (similar temperature and
+\item \textbf{Linear regression (9):} one equation that learns how much each driver changes the net position (temperature, solar, Paks, gas in recent days, day of the week, net position of the previous week) from previous years;
+\item \textbf{Similar days (11):} finds the 10 most similar days in the last two years (similar temperature and
 sun, same type of day, same season) and takes the average of their net position.
 \end{itemize}
 
@@ -277,13 +265,12 @@ Sun 22 Nov & \m1748 & \m41.9 & \m2668 at 19:15 & \m472 at 11:15 \\
 \label{fig:napoved}
 \end{figure}
 
-I expect the highest imports on Monday, because it will be colder and cloudy, and the lowest on Wednesday, when
-it will be warmest with more sun. At the weekend consumption is lower, but it will be colder, so imports will not
+I expect the highest imports on Monday, because it will be colder and cloudy, and the lowest on Wednesday, when it will be the warmest with more sun. During the weekend the consumption is lower, but it will be colder, so imports will not
 fall much. Every day imports are lowest around 11:00, when solar plants produce, and highest around 19:00, when
 there is no sun and consumption is highest (Figure~\ref{fig:napoved}).
 
 % =====================================================================
-\subsection*{c) Will the price in week 47 be higher or lower than 290.98\,€/MWh?}
+\subsection*{c) Will the Price in Week 47 be Higher or Lower than 290.98€/MWh?}
 
 The electricity price on the exchange is set by the most expensive power plant that is still needed to cover
 consumption. In Hungary this is most often a gas-fired plant, so the electricity price follows the gas price.
@@ -313,15 +300,14 @@ prices AT / SK / DE (€/MWh) & 287 / 293 / 257 & 280 / 286 / 245 & ? & lower ev
 \end{table}
 
 In Hungary the drivers are mixed: warmer weather lowers the price, while less sun than in week 45 raises it. The
-gas price is practically unchanged, so it does not affect whether the price will be higher or lower. What matters
-is the wind in Germany, which will be almost twice as strong as in week 45. When the wind blows strongly in
+gas price is practically unchanged, so it does not affect whether the price will be higher or lower. An important factor is the wind in Germany, which will be almost twice as strong as in week 45. When the wind blows strongly in
 Germany, electricity there is cheap, and because Hungary is strongly connected with its neighbours, its price
 falls too. Prices in neighbouring countries already fell in week 46.
 
-\subsection*{Check with price models}
+\subsection*{Check With Price Models}
 
 I tested four price models on 150 weeks from 2024 onwards: how often they correctly identify whether a week will
-be more or less expensive than the week two weeks earlier (as week 47 against week 45). Three of the four,
+be more or less expensive than the week two weeks earlier (e.g. week 47 against week 45). Three out of four,
 including the best in the test, forecast a lower price; the model using only Hungarian data is the worst,
 because the Hungarian price is strongly determined by its neighbours.
 
@@ -342,11 +328,8 @@ merit order, HU data only (TTF × factor) & 20.8 & 68\,\% & 293 \\
 \end{table}
 \vspace{-8pt}
 
-\textbf{Decision: the average price in week 47 will be lower than 290.98\,€/MWh, at about 260–275\,€/MWh.} The
-same cause, cheap electricity in the region due to wind, also means that Hungarian gas-fired plants will run less
-and imports will be higher.
+\textbf{Decision: the average price in week 47 will be lower than 290.98\,€/MWh, at about 260–275\,€/MWh.} The same factor (cheap electricity in the region due to wind) also means that Hungarian gas-fired power plants will operate less, and imports will increase.
 
-\textbf{Risks:} severe cold, no wind, a jump in the gas price or an unplanned power plant outage. If the wind in
-Germany were weaker than in week 45, the price would probably be higher.
+\textbf{Risks:} severe cold, no wind, a jump in the price of gas or an unplanned power plant outage. If the winds in Germany will be weaker than in week 45, the price will probably be higher.
 
 \end{document}
