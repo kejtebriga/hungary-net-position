@@ -69,6 +69,9 @@ if __name__ == "__main__":
         ax.barh([list(rel.index).index(i) for i in m], rel[m], color=PALETA[s],
                 height=0.7, label=IME_SKUPINE[s])
     ax.set_yticks(y, [f"{i} {IMENA[i]}" for i in rel.index], fontsize=7.5)
+    for oznaka, model in zip(ax.get_yticklabels(), rel.index):
+        if model == izbran:                      # izbrani model odebeljeno
+            oznaka.set_fontweight("bold")
     ax.axvline(1, color="#333333", lw=1, ls="--")
     for yi, v in zip(y, rel.values):
         ax.text(v + 0.01, yi, f"{v:.2f}", va="center", fontsize=7)
