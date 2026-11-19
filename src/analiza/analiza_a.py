@@ -48,6 +48,12 @@ def oznaka_leta(leta):
 
 
 def shrani(fig, ime, mapa=FIG):
+    """Shrani graf. Glavni naslov odstranimo – v poročilu je opis pod sliko.
+    (Naslovi posameznih delov pri grafih z več deli ostanejo.)"""
+    if fig._suptitle is not None:
+        fig._suptitle.set_text("")
+    if len(fig.axes) == 1:
+        fig.axes[0].set_title("")
     mapa.mkdir(parents=True, exist_ok=True)
     for konc in ("pdf", "png"):
         fig.savefig(mapa / f"{ime}.{konc}")

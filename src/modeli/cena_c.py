@@ -13,7 +13,7 @@ manjši, ko v regiji piha (veter v Nemčiji → poceni elektrika pri sosedih).
 
 Brez pogleda v prihodnost: le podatki do ned 15. 11. 2026 23:45; TTF zadnji znani
 (pet 13. 11.); vreme in veter DE: napoved s 14. 11. V testu izmerjeno vreme/veter.
-Zagon: .venv/bin/python src/modeli/cena_c.py
+Zagon: .venv/bin/python src/modeli/cena_c.py   (samo grafi: dodaj --samo-grafi)
 """
 import sys
 import warnings
@@ -127,6 +127,8 @@ def napovej_ceno(Fc, W, mreze):
 # 3. GLAVNI DEL
 # ---------------------------------------------------------------------------
 if __name__ == "__main__":
+    # --samo-grafi: brez ponovnega testa in učenja, napoved t47 se prebere iz shranjene datoteke
+    SAMO_GRAFI = "--samo-grafi" in sys.argv
     pd.set_option("display.width", 220)
     df, vreme, tipi, dan = podatki_c()
     izvori = pd.date_range("2019-12-30", T47, freq="W-MON")
@@ -135,45 +137,49 @@ if __name__ == "__main__":
     print(f"Kontrola: povprečna cena tedna 45 = {dan.loc[T45:T45 + 6 * D, 'cena'].mean():.2f}"
           f" €/MWh (naloga: {CENA_T45})")
 
-    # --- test na 202 tednih: napaka in pravilna smer (W proti W−2)
-    vr, mreze = [], None
-    for i, W in enumerate(TEDNI_TEST):
-        if i % 4 == 0:
-            u = ucni(Fc, W)
-            mreze = Mreze(5).nauci(u[VHODI_C].values, u[["cena"]].values)
-        nap, _ = napovej_ceno(Fc, W, mreze)
-        dej = dan.loc[W:W + 6 * D, "cena"].mean()
-        ref = tedenska.get(W - 14 * D)                   # cena 2 tedna prej (kot t45)
-        for m in nap:
-            p = nap[m].mean()
-            vr.append({"teden": W, "model": m, "dejansko": dej, "napoved": p,
-                       "napaka": abs(dej - p),
-                       "smer_ok": np.sign(p - ref) == np.sign(dej - ref)})
-    R = pd.DataFrame(vr)
-    R.to_parquet(DATA / "c_modeli_test.parquet")
-    print(f"\nTEST cenovnih modelov, {len(TEDNI_TEST)} tednov (1. 1. 2024 – 15. 11. 2026); "
-          "smer = ali je teden višji/nižji od tedna 2 prej")
-    g = R.groupby("model")
-    jesen = R[R["teden"].dt.month.isin([10, 11, 12])].groupby("model")
-    print(pd.DataFrame({"napaka tedna €/MWh": g["napaka"].mean(),
-                        "pravilna smer %": g["smer_ok"].mean() * 100,
-                        "okt–dec: napaka": jesen["napaka"].mean(),
-                        "okt–dec: smer %": jesen["smer_ok"].mean() * 100})
-          .round(1).to_string())
+    if not SAMO_GRAFI:
+        # --- test na 202 tednih: napaka in pravilna smer (W proti W−2)
+        vr, mreze = [], None
+        for i, W in enumerate(TEDNI_TEST):
+            if i % 4 == 0:
+                u = ucni(Fc, W)
+                mreze = Mreze(5).nauci(u[VHODI_C].values, u[["cena"]].values)
+            nap, _ = napovej_ceno(Fc, W, mreze)
+            dej = dan.loc[W:W + 6 * D, "cena"].mean()
+            ref = tedenska.get(W - 14 * D)                   # cena 2 tedna prej (kot t45)
+            for m in nap:
+                p = nap[m].mean()
+                vr.append({"teden": W, "model": m, "dejansko": dej, "napoved": p,
+                           "napaka": abs(dej - p),
+                           "smer_ok": np.sign(p - ref) == np.sign(dej - ref)})
+        R = pd.DataFrame(vr)
+        R.to_parquet(DATA / "c_modeli_test.parquet")
+        print(f"\nTEST cenovnih modelov, {len(TEDNI_TEST)} tednov (1. 1. 2024 – 15. 11. 2026); "
+              "smer = ali je teden višji/nižji od tedna 2 prej")
+        g = R.groupby("model")
+        jesen = R[R["teden"].dt.month.isin([10, 11, 12])].groupby("model")
+        print(pd.DataFrame({"napaka tedna €/MWh": g["napaka"].mean(),
+                            "pravilna smer %": g["smer_ok"].mean() * 100,
+                            "okt–dec: napaka": jesen["napaka"].mean(),
+                            "okt–dec: smer %": jesen["smer_ok"].mean() * 100})
+              .round(1).to_string())
 
-    # --- napoved tedna 47
-    u = ucni(Fc, T47)
-    mreze = Mreze(5).nauci(u[VHODI_C].values, u[["cena"]].values)
-    nap47, k3 = napovej_ceno(Fc, T47, mreze)
-    print("\nMerit order (C3) za teden 47: faktor = cena/TTF = "
-          f"{k3[0]:.2f} {k3[3]:+.5f}·preostala {k3[4]:+.4f}·veter_DE "
-          f"{k3[1]:+.2f}·sob {k3[2]:+.2f}·ned")
-    t = nap47.copy()
-    t.index = [d.strftime("%a %d.%m.") for d in t.index]
-    t.loc["TEDEN 47 (base)"] = nap47.mean()
-    print("\nNAPOVED CENE TEDNA 47, €/MWh (dnevna povprečja)")
-    print(t.T.round(1).to_string())
-    nap47.to_parquet(DATA / "c_napoved_t47.parquet")
+    if SAMO_GRAFI:
+        nap47 = pd.read_parquet(DATA / "c_napoved_t47.parquet")
+    else:
+        # --- napoved tedna 47
+        u = ucni(Fc, T47)
+        mreze = Mreze(5).nauci(u[VHODI_C].values, u[["cena"]].values)
+        nap47, k3 = napovej_ceno(Fc, T47, mreze)
+        print("\nMerit order (C3) za teden 47: faktor = cena/TTF = "
+              f"{k3[0]:.2f} {k3[3]:+.5f}·preostala {k3[4]:+.4f}·veter_DE "
+              f"{k3[1]:+.2f}·sob {k3[2]:+.2f}·ned")
+        t = nap47.copy()
+        t.index = [d.strftime("%a %d.%m.") for d in t.index]
+        t.loc["TEDEN 47 (base)"] = nap47.mean()
+        print("\nNAPOVED CENE TEDNA 47, €/MWh (dnevna povprečja)")
+        print(t.T.round(1).to_string())
+        nap47.to_parquet(DATA / "c_napoved_t47.parquet")
 
     # --- tabela dejavnikov t45 → t46 → t47
     t47 = Fc[Fc["izvor"] == T47]
@@ -224,7 +230,7 @@ if __name__ == "__main__":
     ax.set_ylabel("cena / cena plina TTF")
     ax.set_title("Merit order: več preostale porabe → dražja elektrika", pad=40)
     ax.legend(ncol=3, loc="lower center", bbox_to_anchor=(0.5, 1.02), fontsize=7.5)
-    fig.text(0.99, -0.03, "Dnevna povprečja, lokalni čas. TTF = zadnja znana cena plina. "
+    fig.text(0.99, -0.07, "Dnevna povprečja, lokalni čas. TTF = zadnja znana cena plina. "
              "Vir: Energy-Charts, investing.com", ha="right", fontsize=9.5, color="#666666")
     shrani(fig, "c1_merit_order", FIG_C)
 

@@ -54,6 +54,38 @@ literatura/    povzetki člankov
 report/        poročilo (LaTeX) in zamrznjena napoved tedna 47
 ```
 
+## Grafi
+
+Vsi grafi so v mapi `figures/` (PNG za ogled, PDF za poročilo). ✔ = v poročilu.
+
+### a) Analiza (`figures/a/`)
+| graf | kaj kaže | v poročilu |
+|---|---|---|
+| [a1a_letni_trend_brez_sonca](figures/a/a1a_letni_trend_brez_sonca.png) | proizvodnja brez sonca in poraba 2015–2026 + neto pozicija po letih | |
+| [a1b_letni_trend_s_soncem](figures/a/a1b_letni_trend_s_soncem.png) | proizvodnja po vrstah elektrarn in poraba 2020–2026 | ✔ |
+| [a2_meje_po_letih](figures/a/a2_meje_po_letih.png) | neto trgovanje po mejah, po letih | (kot tabela) |
+| [a3a_mesecno_poraba_neto](figures/a/a3a_mesecno_poraba_neto.png) | poraba in neto pozicija po mesecih, tri obdobja | |
+| [a3b_mesecno_viri_2022_2026](figures/a/a3b_mesecno_viri_2022_2026.png) | proizvodnja po vrstah in poraba po mesecih 2022–2026 | |
+| [a4a_dnevni_profil_letni_casi](figures/a/a4a_dnevni_profil_letni_casi.png) | neto pozicija čez dan po letnih časih, tri obdobja | |
+| [a4b_profil_okt_nov_po_letih](figures/a/a4b_profil_okt_nov_po_letih.png) | neto pozicija čez dan v oktobru in novembru, po letih | ✔ |
+| [a5a_poraba_temperatura](figures/a/a5a_poraba_temperatura.png) | poraba proti temperaturi (ravna in zalomljena črta), tri obdobja | ✔ |
+| [a5b_poraba_dnevi_v_tednu](figures/a/a5b_poraba_dnevi_v_tednu.png) | poraba po dnevih v tednu | |
+| [a6_capture_price](figures/a/a6_capture_price.png) | baseload, peakload in vrednost (capture price) sonca, plina, Paksa | |
+
+### b) Napoved neto pozicije (`figures/b/`)
+| graf | kaj kaže | v poročilu |
+|---|---|---|
+| [b3_primerjava_modelov](figures/b/b3_primerjava_modelov.png) | napaka 18 modelov glede na naivni model, test 202 tednov | ✔ |
+| [b1_napoved_t47_izbrani](figures/b/b1_napoved_t47_izbrani.png) | napoved tedna 47 po 15 minutah z razponom (izbrani model) | ✔ |
+| [b1_napoved_t47](figures/b/b1_napoved_t47.png) | prva napoved tedna 47 (model po formuli, plin iz 2 tednov) | |
+| [b2_test_tedni](figures/b/b2_test_tedni.png) | test prvega modela: dejansko proti napovedi po tednih 2025–2026 | |
+
+### c) Cena (`figures/c/`)
+| graf | kaj kaže | v poročilu |
+|---|---|---|
+| [c1_merit_order](figures/c/c1_merit_order.png) | cena/TTF proti preostali porabi (merit order) | ✔ |
+| [c2_cene_po_dnevih](figures/c/c2_cene_po_dnevih.png) | dnevne cene tedna 45, 46 in napoved tedna 47 | |
+
 ## Opombe
 
 - Vsi časi v podatkih so v UTC; za prikaz se pretvorijo v srednjeevropski čas.
